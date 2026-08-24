@@ -1,0 +1,6 @@
+[submodule "API-6SEM-BACKEND"]
+	path = API-6SEM-BACKEND
+	url = https://github.com/DenariusData/API-6SEM-BACKEND.git
+[submodule "API-6SEM-FRONTEND"]
+	path = API-6SEM-FRONTEND
+	url = https://github.com/DenariusData/API-6SEM-FRONTEND.git
