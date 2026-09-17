@@ -62,11 +62,11 @@ The goal is to reduce the manual effort of reading, classifying and cross-refere
 ## 📋 Non-Functional Requirements
 
 | ID | Non-Functional Requirement | Description |
-|----|------------------------------|-------------|
+|---|---|---|
 | RNF01 | API Documentation | The system must provide clear, comprehensive documentation for all API endpoints. |
 | RNF02 | Data / Database Modeling | The system must implement a well-structured data model supporting the document taxonomy and classification rules. |
 | RNF03 | LGPD Anonymization | The system must implement data anonymization mechanisms in compliance with the LGPD. |
-| RNF04 | Access & Manipulation Logs | The system must record logs of data access and manipulation. |
+| RNF04 | Access & Manipulation Logs | The system must record immutable logs of data access and manipulation. |
 | RNF05 | De-characterization Records | The system must keep records of database de-characterization procedures. |
 
 ---
@@ -78,23 +78,28 @@ The goal is to reduce the manual effort of reading, classifying and cross-refere
 Closed decisions made by the Product Owner that orient every User Story. Changing one of these requires reviewing the affected stories.
 
 | ID | Topic | Decision |
-|----|-------|----------|
-| D1 | Architecture | Document processing and answer generation run on a local model. No external API calls in the document pipeline. |
-| D2 | AI | Every AI answer cites the source document, revision and excerpt. |
+|---|---|---|
+| D1 | Architecture | Document processing and answer generation run on a local model. No external AI API calls in the document pipeline. |
+| D2 | AI | Every AI answer cites the source document and revision. |
 | D3 | AI | The answer is split into "Extracted from document" and "AI interpretation" blocks, with a notice that the interpretation is not an official company determination. |
 | D4 | Taxonomy | The taxonomy has three levels: Area, Category and Subcategory, plus free tags. |
-| D5 | Data Model | A document can belong to multiple areas (N:N relationship). |
+| D5 | Data Model | A document can belong to multiple areas (N:N relationship), with exactly one marked as the **primary area** and the rest as secondary. A document is never duplicated across areas. |
 | D6 | Metadata | Reference standard is an optional field. A document without an associated standard enters the archive normally. |
-| D7 | Metadata | Required upload fields: title, revision, issue date, area, category, language, owner and initial classification. |
-| D8 | Security | Five classification levels exist: Public, Internal, Restricted, Confidential and Sensitive. |
-| D9 | Security | Permission is the intersection between document classification and user profile. Belonging to an area does not automatically grant access to all its documents. |
-| D10 | Security | Documents up to Confidential are processed by the AI automatically. Sensitive documents require individual release by the owner. |
-| D11 | Security | Without permission, the user sees title, classification and owner only — never the excerpt or content. |
-| D12 | Process | Publishing flow: Upload, Initial classification, Validation, Available. Whoever uploads a document cannot approve its own classification. |
-| D13 | Process | Requests for a missing document are routed to the owner of the selected area. |
-| D14 | AI | The archive may contain English documents; questions may be asked in Portuguese or English. The answer is given in the language of the question, while the cited excerpt stays in its original language. |
+| D7 | Metadata | **Updated.** Required upload fields (16 total): title, identifier/code, document type, revision number, issue date, effective date (when applicable), responsible area, category and subcategory, status, classification level, origin/source, document owner, language, related standard (when applicable), validity date (when applicable), original file. |
+| D8 | Security | **Updated.** Four classification levels exist: **Public, Internal, Restricted, Confidential** (the previous fifth level, Sensitive, was removed). |
+| D9 | Security | **Updated.** Permission is the combination of **user/group + area + classification**. Belonging to an area does NOT automatically grant access to every document in that area. A document may also carry its own restriction outside the general rule, for exceptional cases. |
+| D10 | Security | **Updated.** AI-processing authorization is a policy separate from classification: Public = allowed · Internal = allowed per policy · Restricted = requires explicit authorization · Confidential = blocked by default. The system records who authorized processing, when, and which document version. |
+| D11 | Security | **Updated.** Without permission, minimal existence applies: the user sees only an "access not authorized" message — no title, excerpt, summary or content. For sensitive documents, not even the title is shown. |
+| D12 | Process | Publishing flow: Upload → Initial classification → Validation → Available. Whoever uploads a document cannot approve their own document. |
+| D13 | Process | **Updated.** Requests for a missing document are routed by the **area of the category**, with a central governance area handling exceptions where no owner is defined. |
+| D14 | AI | The archive may contain English documents; questions may be asked in Portuguese or English. The answer is given in the language of the question, while the cited excerpt stays in its original language. Supported languages are kept in configuration, so new ones can be added without changing the system structure. |
 | D15 | Performance | Term search under 2 seconds; AI query under 10 seconds. |
 | D16 | Validation | Product validation scenario: material compatibility, in Engineering. |
+| D17 | Data Model | **New.** Documents can be related to one another: Complements, Amends, References, Supersedes. Relations are registered once and shown on both linked documents' records. |
+| D18 | Data Model | **New.** Document status: Current, Superseded, Cancelled, Under Review. Only the Current version appears in search; older versions remain visible in history with their corresponding status. |
+| D19 | Security | **New.** Requests for access to a blocked document are always routed to the document's or owning area's responsible party — never to a fixed administrative area. |
+| D20 | Taxonomy | **New.** Nine accepted document types: Standards/Regulations, Internal Procedures, Manuals, Instructions, Circulars, Bulletins, Reports, Manufacturer Documents, Complementary/Reference Documents. No closed taxonomy exists at the client; the team proposes the structure and validates it in writing before loading it into the system. |
+ 
 
 ---
 
@@ -105,36 +110,49 @@ Closed decisions made by the Product Owner that orient every User Story. Changin
 ### 📋 Epics Legend
 
 | Epic | Name |
-|------|------|
+|---|---|
 | E1 | Ingestion and Document Processing |
 | E2 | Classification and Access Control |
 | E3 | AI-Powered Query |
 | E4 | Infrastructure and Testing Base |
+| E5 | Privacy and LGPD Compliance |
 
 ---
 
 ### ✅ Backlog Items Table
 
 | ID | Epic | User Story | Priority | Points | Sprint | Status |
-|----|------|------------|----------|--------|--------|--------|
-| US-01 | E4 | As the technical team, I want the LLM and embeddings model running on local infrastructure, so that we comply with the restriction of not using external APIs. | Very High | 8 |  1 | To Do  |
-| US-02 | E1 | As the team, I want the data structure implemented according to decisions D4, D5 and D7, so that it supports upload and search. | Very High | 5 |  1 | To Do  |
-| US-03 | E1 | As a collaborator, I want to upload a document with its metadata, so that it is added to the archive. | High | 5 |  1 | To Do  |
-| US-04 | E1 | As the system, I want to extract text from PDFs and Office files while preserving structure, so that citation by excerpt is possible. | High | 5 |  1 | To Do  |
-| US-05 | E4 | As the team, I want a representative test base loaded, so that we can develop and demo the product. | High | 3 |  1 | To Do  |
-| US-06 | E2 | As an administrator, I want to manage users and profiles, so that access control is supported. | High | 4 |  1 | To Do  |
-| US-07 | E1 | As the system, I want to apply OCR to scanned documents, so that the historical archive becomes searchable. | Very High | 8 |  2 | To Do  |
-| US-08 | E1 | As the system, I want to split documents into chunks and index them, so that semantic search is possible. | Very High | 8 |  2 | To Do  |
-| US-09 | E2 | As a document manager, I want to classify documents as Public, Internal, Restricted, Confidential or Sensitive. | Very High | 3 |  2 | To Do  |
-| US-10 | E2 | As the document management lead, I want to validate the classification before a document becomes available. | Very High | 5 |  2 | To Do  |
-| US-11 | E2 | As an administrator, I want to grant access by combining document classification and user profile. | Very High | 8 |  2 | To Do  |
-| US-12 | E1 | As a user, I want the system to identify the current revision, so that I don't consult an obsolete version. | Medium | 3 |  2 | To Do  |
-| US-13 | E3 | As a user, I want to ask a question in natural language and receive an objective, source-grounded answer. | Very High | 13 |  3 | To Do  |
-| US-14 | E2 | As the system, I want to filter excerpts by user permission before building the model's context. | Very High | 5 |  3 | To Do  |
-| US-15 | E3 | As a user, I want to ask about English documents in Portuguese and receive the answer in Portuguese. | High | 5 |  3 | To Do  |
-| US-16 | E3 | As a user, I want the answer to make explicit the relationship between information from different documents. | High | 5 |  3 | To Do  |
-| US-17 | E3 | As a user, I want to open the document at the exact cited excerpt, so that I can validate the information. | Medium | 3 |  3 | To Do  |
-| US-18 | E2 | As a user, I want to request access to a blocked document or request the inclusion of a missing one. | Medium | 5 |  3 | To Do  |
+|---|---|---|---|---|---|---|
+| US-01 | E4 | As the technical team, I want the LLM and embeddings model running on local infrastructure, so that we comply with the restriction of not using external APIs. | Very High | 8 | 1 | To Do |
+| US-02 | E1 | As the technical team, I want the data structure implemented according to decisions D4, D7, so that it supports upload and search. | Very High | 5 | 1 | To Do |
+| US-03 | E1 | As a collaborator, I want to upload a document with its metadata, so that it is added to the archive. | Very High | 5 | 1 | To Do |
+| US-04 | E1 | As the system, I want to extract text from PDFs and Office files while preserving structure, so that citation by excerpt is possible. | Very High | 5 | 1 | To Do |
+| US-05 | E4 | As the team, I want a representative test base loaded, so that we can develop and demo the product. | Very High | 3 | 1 | To Do |
+| US-06 | E2 | As an administrator, I want to manage users and profiles, so that access control is supported. | Very High | 4 | 1 | To Do |
+| US-19 | E5 | As the compliance lead, I want personal data stored in a separate, access-restricted database, so that the document archive never holds personal data directly. | Very High | 8 | 1 | To Do |
+| US-20 | E5 | As the platform owner, I want a Terms of Use, Privacy Notice and Consent form published with version control, so that users accept them before their first access. | Very High | 13 | 1 | To Do |
+| US-21 | E5 | As the system, I want to record an immutable log of every data access and action, so that we can audit usage without exposing personal data. | Very High | 5 | 1 | To Do |
+| US-22 | E5 | As the compliance lead, I want a separate AI-processing authorization policy per document, so that sensitive content is never processed without explicit approval. | Very High | 5 | 1 | To Do |
+| US-07 | E1 | As the system, I want to apply OCR to scanned documents, so that the historical archive becomes searchable. | High | 8 | 2 | To Do |
+| US-08 | E1 | As the system, I want to split documents into chunks and index them, so that semantic search is possible. | High | 8 | 2 | To Do |
+| US-09 | E2 | As a document manager, I want to classify documents as Public, Internal, Restricted or Confidential. | High | 3 | 2 | To Do |
+| US-10 | E2 | As the document management lead, I want to validate the classification before a document becomes available. | High | 5 | 2 | To Do |
+| US-11 | E2 | As an administrator, I want to grant access by combining user/group, area and document classification. | High | 8 | 2 | To Do |
+| US-23 | E5 | As the compliance lead, I want the personal data database encrypted at rest, so that data stays protected even if storage is compromised. | High | 5 | 2 | To Do |
+| US-24 | E5 | As a user, I want a "My Data" screen to view and edit my own name, phone and role, so that I control my personal information. | High | 5 | 2 | To Do |
+| US-25 | E5 | As a user, I want to review, accept or cancel optional consent terms at any time, so that I stay in control of optional data uses. | High | 5 | 2 | To Do |
+| US-26 | E5 | As a user, I want to permanently delete my account, so that my personal data is fully removed while my uploaded documents remain attributed to "Removed User." | High | 8 | 2 | To Do |
+| US-12 | E1 | As a user, I want the system to identify the current revision, so that I don't consult an obsolete version. | Medium | 3 | 2 | To Do |
+| US-13 | E3 | As a user, I want to ask a question in natural language and receive an objective, source-grounded answer. | Low | 13 | 3 | To Do |
+| US-14 | E2 | As the system, I want to filter excerpts by user permission before building the model's context. | Low | 5 | 3 | To Do |
+| US-15 | E3 | As a user, I want to ask about English documents in Portuguese and receive the answer in Portuguese. | Low | 5 | 3 | To Do |
+| US-16 | E3 | As a user, I want the answer to make explicit the relationship between information from different documents. | Low | 5 | 3 | To Do |
+| US-17 | E3 | As a user, I want to open the document at the exact cited excerpt, so that I can validate the information. | Low | 3 | 3 | To Do |
+| US-18 | E1 | As a user, I want to request access to a blocked document or request the inclusion of a missing one. | Low | 5 | 3 | To Do |
+| US-27 | E5 | As a user, I want to export all my personal data in a portable format, so that I can exercise my LGPD data-portability right. | Low | 5 | 3 | To Do |
+| US-28 | E5 | As the security team, I want alerts on abnormal login attempts or mass downloads, so that we can react quickly to suspicious activity. | Low | 5 | 3 | To Do |
+| US-29 | E5 | As an auditor, I want to query the access log by user, period and action with export, and be sure no one can alter or delete it, so that we have a trustworthy audit trail. | Low | 5 | 3 | To Do |
+ 
 
 → [Back to top](#denarius-data)
 
@@ -144,7 +162,7 @@ Closed decisions made by the Product Owner that orient every User Story. Changin
 
 # 🏃‍♂️ DoR — Definition of Ready
 
-- User story written as *As [role], I want [action], so that [benefit]*, with clear and testable acceptance criteria
+- User story written as "As [role], I want [action], so that [benefit]", with clear and testable acceptance criteria
 - Applicable Product Decisions (business rules) identified and linked
 - Wireframe attached, when the story involves a user-facing interface
 - Known technical dependencies identified (other stories or decisions involved)
