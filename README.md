@@ -320,7 +320,7 @@ git submodule update --remote --merge
 # 📜 Project Guidelines
 
 <details>
-<summary>Click to expand — Project Rules and Commit Standard</summary>
+<summary>Click to expand — Project Rules, Branch, Commit and Pull Request Standard</summary>
 
 ## 👥 Team Participation Rules
 
@@ -333,55 +333,93 @@ git submodule update --remote --merge
 
 ---
 
+## 🌿 Branch Standard
+
+- `main`: delivered releases only (merged from `develop` at the end of each sprint)
+- `develop`: integration branch; every task branch starts from it and goes back to it
+
+Task branches always carry the Jira task code, so Jira links the branch, commits and PR to the card:
+
+    <type>/AKA-<number>-short-description
+
+Accepted types: `feat` (or `feature`), `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `chore`, `ci`, `build`, `revert`.
+
+    feature/AKA-55-ai-response-language-support
+    test/AKA-99-unit-tests
+    feature/AKA-46-Create-validation-states-and-document-history
+
+Branches created from the Jira card ("Create branch") already follow this format.
+
+---
+
 ## 📌 Commit Standard
 
-All commits must follow the **"Commit Pattern – by Renato Adorno"** to ensure consistency and clarity across the repository.
+All commits follow the **"Commit Pattern – by Renato Adorno"** ([Conventional Commits](https://www.conventionalcommits.org)) with the Jira task code right after the type:
 
-### Commit Format
-
-    <type>: <description in English>
+    <type>: AKA-<number> <description in English>
 
 The description must:
 - Be written in **English**
 - Use a **direct, imperative tone**
 - Be **clear and concise**
-
----
+- Have no scope in parentheses (`feat(auth):` is rejected)
 
 ### 🧩 Commit Types
 
-- **fix** – Fixes a bug
 - **feat** – Introduces a new feature
+- **fix** – Fixes a bug
 - **docs** – Documentation-only changes
 - **style** – Code formatting changes with no logic impact
 - **refactor** – Code improvements that do not alter behavior
-- **build** – Changes to the build system or dependencies
+- **perf** – Performance improvements
 - **test** – Adding or updating tests
+- **build** – Changes to the build system or dependencies
+- **ci** – Changes to CI workflows
 - **chore** – Routine maintenance tasks
-
----
+- **revert** – Reverts a previous commit
 
 ### ✅ Examples
 
-    feat: add document upload endpoint
-    docs: update backend README
-    fix: correct classification level validation
-    refactor: improve OCR pipeline performance
-    test: add unit tests for permission filter
-
----
+    feat: AKA-95 add script to test bge-m3 locally
+    fix: AKA-28 correct JWT expiration check
+    test: AKA-99 add backend unit tests with pytest
+    docs: AKA-13 add document portal terms of use
 
 ### ⚠️ Rules
 
-- Always write commits in **English**
-- Strictly follow the defined **commit types**
-- Avoid vague or uninformative messages such as:
-  - `update`
-  - `fix stuff`
+- The `AKA-<number>` code is mandatory: without it Jira does not link the commit to the task
+- Avoid vague messages such as `update` or `fix stuff`; prefer descriptive, actionable ones:
 
-Always prefer descriptive, actionable messages such as:
+      fix: AKA-28 return unified error message on invalid login
 
-    fix: correct null pointer exception in service layer
+---
+
+## 🔀 Pull Request Standard
+
+1. Push the task branch and open the PR **against `develop`**
+2. PR title uses the same format as the commit, with the description starting with an **uppercase letter** and no punctuation at the end:
+
+       feat: AKA-55 Add language support for AI response
+       test: AKA-100 Add backend integration tests with PostgreSQL in CI
+
+   The **PR Title Check** workflow rejects titles outside this format.
+3. Fill in the PR template (`.github/PULL_REQUEST_TEMPLATE.md` in the backend and frontend repositories): description, Jira task, type of change, how to test and checklist
+4. Requirements to merge: CI green (lint, build, tests), at least **1 approval** and no conflicts
+5. Merge always with **Squash and merge**: the PR title becomes the single commit on `develop`
+6. Delete the branch after the merge
+
+At the end of each sprint, `develop` is merged into `main` through a release PR (`Release: vX.Y.Z — Sprint N delivery`).
+
+---
+
+## 🪝 Local Validation Hooks
+
+The backend and frontend repositories validate the branch name and the commit message before each commit, using [pre-commit](https://pre-commit.com) (`scripts/validate_branch_name.py` and `scripts/validate_commit_msg.py`). Install the hooks once per clone:
+
+    pip install pre-commit
+    pre-commit install --hook-type pre-commit --hook-type commit-msg
+
+From then on, a commit on a branch or with a message outside the standard is blocked with an explanation of the expected format. The same hooks also run Ruff (backend) or ESLint + Prettier (frontend).
 
 </details>
 
