@@ -12,6 +12,7 @@
     <a href="#product-backlog">Product Backlog</a>  |
     <a href="#dor">DoR</a>  |
     <a href="#dod">DoD</a>  |
+    <a href="#tests">Tests</a>  |
     <a href="#sprint-schedule">Sprint Schedule</a>  |
     <a href="#technologies">Technologies</a> |
     <a href="#getting-started">Getting Started</a> |
@@ -181,6 +182,19 @@ Closed decisions made by the Product Owner that orient every User Story. Changin
 - Applicable Product Decisions (business rules) verified
 - Documentation updated in Git, when applicable
 - No known critical bugs open for the story
+
+→ [Back to top](#denarius-data)
+
+---
+
+<span id="tests"></span>
+
+# 🧪 Tests
+
+| Guide | Backend | Frontend |
+|-------|---------|----------|
+| [Unit tests](docs/testes/testes-unitarios.md) | `pytest tests/unit` | `npm run test:unit` |
+| [Integration tests](docs/testes/testes-integracao.md) | `pytest tests/integration` | `npm run test:integration` |
 
 → [Back to top](#denarius-data)
 
