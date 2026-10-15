@@ -194,6 +194,7 @@ Closed decisions made by the Product Owner that orient every User Story. Changin
 | Guide | Backend | Frontend |
 |-------|---------|----------|
 | [Unit tests](docs/testes/testes-unitarios.md) | `pytest tests/unit` | `npm run test:unit` |
+| [Integration tests](docs/testes/testes-integracao.md) | `pytest tests/integration` | `npm run test:integration` |
 
 → [Back to top](#denarius-data)
 
