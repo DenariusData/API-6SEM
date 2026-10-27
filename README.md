@@ -202,7 +202,11 @@ Closed decisions made by the Product Owner that orient every User Story. Changin
 
 | Sprint | Video |
 |--------|-------|
-| Sprint 2 | [▶️ Watch the Sprint 2 demo](https://github.com/DenariusData/API-6SEM/blob/main/docs/videos/sprint-2-demo.mp4) |
+| Sprint 2 | [▶️ Watch the Sprint 2 demo](https://github.com/DenariusData/API-6SEM/raw/main/docs/WhatsApp%20Video%202026-10-27%20at%2014.11.10%20%281%29%20%281%29.mp4) |
+
+
+
+
 
 → [Back to top](#denarius-data)
 
