@@ -193,8 +193,16 @@ Closed decisions made by the Product Owner that orient every User Story. Changin
 | Sprint | Period | Points | History |
 |--------|--------|--------|---------|
 | Sprint 1 | 09/07 – 09/27 | 30 | [Sprint 1 Docs](https://github.com/DenariusData/API-6SEM/tree/main/docs) |
-| Sprint 2 | 10/05 – 10/25 | 35 | [Sprint 2 Docs](https://github.com/DenariusData/API-6SEM/tree/main/docs) |
+| Sprint 2 | 10/05 – 10/25 | 35 | [Sprint 2 Docs](https://github.com/DenariusData/API-6SEM/tree/main/docs) · [Sprint 2 Video](#sprint-videos) |
 | Sprint 3 | 11/02 – 11/22 | 36 | [Sprint 3 Docs](https://github.com/DenariusData/API-6SEM/tree/main/docs) |
+
+<span id="sprint-videos"></span>
+
+### 🎥 Sprint Videos
+
+| Sprint | Video |
+|--------|-------|
+| Sprint 2 | [▶️ Watch the Sprint 2 demo](https://github.com/DenariusData/API-6SEM/blob/main/docs/videos/sprint-2-demo.mp4) |
 
 → [Back to top](#denarius-data)
 
