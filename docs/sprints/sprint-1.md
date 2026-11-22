@@ -5,7 +5,7 @@
 | **Período** | 07/09/2026 – 27/09/2026 |
 | **Meta da Sprint** | _Não registrada no Jira._ |
 | **Entregue** | 20 tarefas (163 h estimadas) |
-| **Vídeo do incremento** | _a incluir_ |
+| **Vídeo do incremento** | — |
 
 ## Backlog da Sprint
 
