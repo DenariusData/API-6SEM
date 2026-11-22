@@ -4,7 +4,7 @@
 |---|---|
 | **Período** | 02/11/2026 – 22/11/2026 |
 | **Meta da Sprint** | Privacidade e LGPD, com uma funcionalidade de ponta a ponta (prioridade definida após o feedback dos professores em 04/11). |
-| **Entregue** | 16 tarefas (101 h estimadas) |
+| **Entregue** | 17 tarefas (101 h estimadas) |
 | **Vídeo do incremento** | _a incluir_ |
 
 ## Backlog da Sprint
@@ -28,12 +28,9 @@ Fonte: Jira (projeto AKA, quadro Scrum). Estimativas em horas.
 | [AKA-81](https://denariusdata6.atlassian.net/browse/AKA-81) | Tela de consulta do log por usuário, período e ação, com exportação | Tiago Bernardo Santos | Concluído | 10 |
 | [AKA-99](https://denariusdata6.atlassian.net/browse/AKA-99) | Criar os testes unitários no CI com histórico no SonarQube Cloud | Ali Mohamed | Concluído | — |
 | [AKA-100](https://denariusdata6.atlassian.net/browse/AKA-100) | Criar os testes de integração no CI com PostgreSQL e o guia de uso | Ali Mohamed | Concluído | — |
+| [AKA-102](https://denariusdata6.atlassian.net/browse/AKA-102) | DevOps: deploy em três VMs (front, back e IA) com runner do GitHub Actions em cada uma | Caio Vinicius | Concluído | — |
 | [AKA-103](https://denariusdata6.atlassian.net/browse/AKA-103) | Permitir que o back use o Ollama em uma VM separada da rede interna | Caio Vinicius | Concluído | 3 |
 | [AKA-104](https://denariusdata6.atlassian.net/browse/AKA-104) | Escrever a documentação final do projeto (API, LGPD, manuais e sprints) | Tiago Bernardo Santos | Concluído | — |
-
-## Voltou para o Product Backlog
-
-- **AKA-102** — DevOps: deploy (Caio Vinicius). Em andamento no fim da Sprint.
 
 ## DoR e DoD
 
