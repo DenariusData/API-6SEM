@@ -4,7 +4,7 @@
 |---|---|
 | **Período** | 02/11/2026 – 22/11/2026 |
 | **Meta da Sprint** | Privacidade e LGPD, com uma funcionalidade de ponta a ponta (prioridade definida após o feedback dos professores em 04/11). |
-| **Entregue** | 13 de 17 tarefas (95 h estimadas) |
+| **Entregue** | 16 tarefas (101 h estimadas) |
 | **Vídeo do incremento** | _a incluir_ |
 
 ## Backlog da Sprint
@@ -13,7 +13,7 @@ Fonte: Jira (projeto AKA, quadro Scrum). Estimativas em horas.
 
 | Tarefa | Descrição | Responsável | Situação | Estimativa (h) |
 |---|---|---|---|---|
-| [AKA-20](https://denariusdata6.atlassian.net/browse/AKA-20) | Inventário dos dados pessoais: o que guardamos, para que e por quanto tempo | Beatriz Santos | Em análise | 6 |
+| [AKA-20](https://denariusdata6.atlassian.net/browse/AKA-20) | Inventário dos dados pessoais: o que guardamos, para que e por quanto tempo | Beatriz Santos | Concluído | 6 |
 | [AKA-22](https://denariusdata6.atlassian.net/browse/AKA-22) | Ajustar a instrução da IA para diminuir resposta sem base nos documentos | Caio Vinicius | Concluído | 8 |
 | [AKA-24](https://denariusdata6.atlassian.net/browse/AKA-24) | Guardar a origem de cada resposta e separar o trecho da interpretação da IA | Caio Vinicius | Concluído | 12 |
 | [AKA-25](https://denariusdata6.atlassian.net/browse/AKA-25) | Tela de pergunta com os dois blocos e o aviso de que a interpretação é da IA | Aline Ramos | Concluído | 10 |
@@ -26,17 +26,14 @@ Fonte: Jira (projeto AKA, quadro Scrum). Estimativas em horas.
 | [AKA-77](https://denariusdata6.atlassian.net/browse/AKA-77) | Testar que a exportação não leva nenhum documento junto | Aline Ramos | Concluído | 3 |
 | [AKA-80](https://denariusdata6.atlassian.net/browse/AKA-80) | Impedir que o log seja alterado ou apagado e testar que não guarda dado pessoal | Tiago Bernardo Santos | Concluído | 10 |
 | [AKA-81](https://denariusdata6.atlassian.net/browse/AKA-81) | Tela de consulta do log por usuário, período e ação, com exportação | Tiago Bernardo Santos | Concluído | 10 |
-| [AKA-99](https://denariusdata6.atlassian.net/browse/AKA-99) | Testes unitários e cobertura no SonarQube Cloud | Ali Mohamed | Bloqueado no Jira | — |
-| [AKA-100](https://denariusdata6.atlassian.net/browse/AKA-100) | Guia de testes de integração | Ali Mohamed | Bloqueado no Jira | — |
-| [AKA-102](https://denariusdata6.atlassian.net/browse/AKA-102) | DevOps: deploy | Caio Vinicius | Em andamento | — |
+| [AKA-99](https://denariusdata6.atlassian.net/browse/AKA-99) | Criar os testes unitários no CI com histórico no SonarQube Cloud | Ali Mohamed | Concluído | — |
+| [AKA-100](https://denariusdata6.atlassian.net/browse/AKA-100) | Criar os testes de integração no CI com PostgreSQL e o guia de uso | Ali Mohamed | Concluído | — |
 | [AKA-103](https://denariusdata6.atlassian.net/browse/AKA-103) | Permitir que o back use o Ollama em uma VM separada da rede interna | Caio Vinicius | Concluído | 3 |
+| [AKA-104](https://denariusdata6.atlassian.net/browse/AKA-104) | Escrever a documentação final do projeto (API, LGPD, manuais e sprints) | Tiago Bernardo Santos | Concluído | — |
 
-## Não entregue nesta Sprint
+## Voltou para o Product Backlog
 
-- **AKA-20** (Em análise): Inventário dos dados pessoais: o que guardamos, para que e por quanto tempo
-- **AKA-99** (Bloqueado no Jira): Testes unitários e cobertura no SonarQube Cloud
-- **AKA-100** (Bloqueado no Jira): Guia de testes de integração
-- **AKA-102** (Em andamento): DevOps: deploy
+- **AKA-102** — DevOps: deploy (Caio Vinicius). Em andamento no fim da Sprint.
 
 ## DoR e DoD
 

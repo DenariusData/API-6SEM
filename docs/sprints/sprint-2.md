@@ -4,7 +4,7 @@
 |---|---|
 | **Período** | 05/10/2026 – 25/10/2026 |
 | **Meta da Sprint** | Fechar o ciclo do documento: do upload com metadados à validação, deixando-o disponível para a IA com visualização segura. |
-| **Entregue** | 22 de 23 tarefas (149 h estimadas) |
+| **Entregue** | 22 tarefas (149 h estimadas) |
 | **Vídeo do incremento** | _a incluir_ |
 
 ## Backlog da Sprint
@@ -31,15 +31,14 @@ Fonte: Jira (projeto AKA, quadro Scrum). Estimativas em horas.
 | [AKA-61](https://denariusdata6.atlassian.net/browse/AKA-61) | Visualizador de documento sem opção de baixar | Aline Ramos | Concluído | 10 |
 | [AKA-62](https://denariusdata6.atlassian.net/browse/AKA-62) | Processar para a IA automaticamente o documento aprovado | Caio Vinicius | Concluído | 12 |
 | [AKA-63](https://denariusdata6.atlassian.net/browse/AKA-63) | Tela Meus documentos com o estado de cada envio | Victor Ryan | Concluído | 8 |
-| [AKA-64](https://denariusdata6.atlassian.net/browse/AKA-64) | Bloquear print e download no visualizador | — | Não entregue | 6 |
 | [AKA-65](https://denariusdata6.atlassian.net/browse/AKA-65) | Mostrar o status de processamento do documento | Victor Ryan | Concluído | 2 |
 | [AKA-94](https://denariusdata6.atlassian.net/browse/AKA-94) | Arquivo de chamadas à API de documentos | Aline Ramos | Concluído | 2 |
 | [AKA-95](https://denariusdata6.atlassian.net/browse/AKA-95) | Testar se o bge-m3 roda na máquina local | Tiago Bernardo Santos | Concluído | 2 |
 | [AKA-96](https://denariusdata6.atlassian.net/browse/AKA-96) | Integrar a tela de pergunta ao endpoint de perguntas | Caio Vinicius | Concluído | 3 |
 
-## Não entregue nesta Sprint
+## Voltou para o Product Backlog
 
-- **AKA-64** (Não entregue): Bloquear print e download no visualizador
+- **AKA-64** — Bloquear print e download no visualizador. O visualizador já não tem botão de baixar e mostra a marca d'água (AKA-48, AKA-61); o bloqueio de print ficou para depois.
 
 ## DoR e DoD
 

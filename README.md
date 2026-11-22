@@ -236,9 +236,9 @@ gantt
 
 | Sprint | Period | Goal | Delivered | Video | History |
 |--------|--------|------|-----------|-------|---------|
-| Sprint 1 | 09/07 – 09/27 | Login, upload and the first RAG answer with citation | 20 of 20 tasks | — | [Sprint 1 Docs](docs/sprints/sprint-1.md) |
-| Sprint 2 | 10/05 – 10/25 | Close the document cycle: upload with metadata, validation and secure viewing | 22 of 23 tasks | _link_ | [Sprint 2 Docs](docs/sprints/sprint-2.md) |
-| Sprint 3 | 11/02 – 11/22 | Privacy and LGPD, with one end-to-end feature | 13 of 17 tasks | _link_ | [Sprint 3 Docs](docs/sprints/sprint-3.md) |
+| Sprint 1 | 09/07 – 09/27 | Login, upload and the first RAG answer with citation | 20 tasks | — | [Sprint 1 Docs](docs/sprints/sprint-1.md) |
+| Sprint 2 | 10/05 – 10/25 | Close the document cycle: upload with metadata, validation and secure viewing | 22 tasks | _link_ | [Sprint 2 Docs](docs/sprints/sprint-2.md) |
+| Sprint 3 | 11/02 – 11/22 | Privacy and LGPD, with one end-to-end feature | 16 tasks | _link_ | [Sprint 3 Docs](docs/sprints/sprint-3.md) |
 
 → [Back to top](#denarius-data)
 

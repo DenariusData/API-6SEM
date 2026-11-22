@@ -4,7 +4,7 @@
 |---|---|
 | **Período** | 07/09/2026 – 27/09/2026 |
 | **Meta da Sprint** | _Não registrada no Jira._ |
-| **Entregue** | 20 de 20 tarefas (163 h estimadas) |
+| **Entregue** | 20 tarefas (163 h estimadas) |
 | **Vídeo do incremento** | _a incluir_ |
 
 ## Backlog da Sprint
@@ -35,10 +35,6 @@ Fonte: Jira (projeto AKA, quadro Scrum). Estimativas em horas.
 | [AKA-93](https://denariusdata6.atlassian.net/browse/AKA-93) | Rastreio de requisitos no PR (front) | Tiago Silva | Concluído | 3 |
 
 > **Observação sobre a AKA-30:** a tela de aceite dos Termos existe e aparece a cada login, mas o registro do aceite (usuário, versão e data) não foi implementado no backend. Ver [LGPD, limitações](../lgpd.md#8-limitações-e-pendências).
-
-## Não entregue nesta Sprint
-
-- Nenhuma.
 
 ## DoR e DoD
 
