@@ -12,6 +12,7 @@
     <a href="#product-backlog">Product Backlog</a>  |
     <a href="#dor">DoR</a>  |
     <a href="#dod">DoD</a>  |
+    <a href="#tests">Tests</a>  |
     <a href="#sprint-schedule">Sprint Schedule</a>  |
     <a href="#technologies">Technologies</a> |
     <a href="#getting-started">Getting Started</a> |
@@ -21,8 +22,19 @@
     <a href="#project-guidelines">Project Guidelines</a>
 </p>
 
-> Project Status: **In Progress 🚧** <br /><br />
-> Documentation Folder: [Link](https://github.com/DenariusData/API-6SEM/tree/main/docs) 📄 <br /><br />
+> Project Status: **Sprint 3 delivered — Review 11/23–11/27 · Fair 12/03** <br /><br />
+> Documentation Folder: [Link](docs/) 📄 <br /><br />
+> Repositories: [Backend](https://github.com/DenariusData/API-6SEM-BACKEND) · [Frontend](https://github.com/DenariusData/API-6SEM-FRONTEND) <br /><br />
+
+| 📚 Documentation | |
+|---|---|
+| [Installation Manual](docs/manual-instalacao.md) | Run the whole system locally, step by step |
+| [User Manual](docs/manual-usuario.md) | How to use each screen, by profile |
+| [API Documentation](docs/api.md) | Every route, with request, response and errors |
+| [Data Model](https://github.com/DenariusData/API-6SEM-BACKEND/blob/develop/docs/modelagem-banco/modelagem-dados.md) | Both databases, tables and rules |
+| [LGPD](docs/lgpd.md) · [Personal Data Inventory](docs/inventario-dados-pessoais.md) | Pseudonymization, logs and de-identification records |
+| [DoR and DoD checklist](docs/dor-dod.md) · [Branch Strategy](docs/estrategia-branch.md) | Team process |
+| [Sprint 1](docs/sprints/sprint-1.md) · [Sprint 2](docs/sprints/sprint-2.md) · [Sprint 3](docs/sprints/sprint-3.md) | Backlog, owners and delivery of each Sprint |
 
 ---
 
@@ -162,6 +174,8 @@ Closed decisions made by the Product Owner that orient every User Story. Changin
 
 # 🏃‍♂️ DoR — Definition of Ready
 
+> Full checklist used in the Sprints: [DoR and DoD checklist](docs/dor-dod.md).
+
 - User story written as "As [role], I want [action], so that [benefit]", with clear and testable acceptance criteria
 - Applicable Product Decisions (business rules) identified and linked
 - Wireframe attached, when the story involves a user-facing interface
@@ -186,33 +200,45 @@ Closed decisions made by the Product Owner that orient every User Story. Changin
 
 ---
 
+<span id="tests"></span>
+
+# 🧪 Tests
+
+| Guide | Backend | Frontend |
+|-------|---------|----------|
+| [Unit tests](docs/testes/testes-unitarios.md) | `pytest tests/unit` | `npm run test:unit` |
+| [Integration tests](docs/testes/testes-integracao.md) | `pytest tests/integration` | `npm run test:integration` |
+
+→ [Back to top](#denarius-data)
+
+---
+
 <span id="sprint-schedule"></span>
 
 # 📅 Sprint Schedule
 
-| Sprint | Period | Points | History |
-|--------|--------|--------|---------|
-| Sprint 1 | 09/07 – 09/27 | 30 | [Sprint 1 Docs](https://github.com/DenariusData/API-6SEM/tree/main/docs) |
-| Sprint 2 | 10/05 – 10/25 | 35 | [Sprint 2 Docs](https://github.com/DenariusData/API-6SEM/tree/main/docs) · [Sprint 2 Video](#sprint-videos) |
-| Sprint 3 | 11/02 – 11/22 | 36 | [Sprint 3 Docs](https://github.com/DenariusData/API-6SEM/tree/main/docs) |
+```mermaid
+gantt
+    title AkaVision — 2026 schedule
+    dateFormat YYYY-MM-DD
+    axisFormat %d/%m
+    section Sprints
+    Sprint 1 :done, s1, 2026-09-07, 2026-09-27
+    Sprint 2 :done, s2, 2026-10-05, 2026-10-25
+    Sprint 3 :active, s3, 2026-11-02, 2026-11-22
+    section Reviews
+    Review 1 :milestone, 2026-09-28, 0d
+    Review 2 :milestone, 2026-10-26, 0d
+    Review 3 :r3, 2026-11-23, 2026-11-27
+    section Fair
+    Feira de Soluções :milestone, 2026-12-03, 0d
+```
 
-<span id="sprint-videos"></span>
-
-### 🎥 Sprint Videos
-
-| Sprint | Video |
-|--------|-------|
-| Sprint 2 | https://github.com/user-attachments/assets/1b864bef-fccb-474c-94ad-c9e88c0669a1
-
-
-
-
-
-
-
-
-
-
+| Sprint | Period | Goal | Delivered | Video | History |
+|--------|--------|------|-----------|-------|---------|
+| Sprint 1 | 09/07 – 09/27 | Login, upload and the first RAG answer with citation | 20 tasks | — | [Sprint 1 Docs](docs/sprints/sprint-1.md) |
+| Sprint 2 | 10/05 – 10/25 | Close the document cycle: upload with metadata, validation and secure viewing | 22 tasks | [Sprint 2 Video](https://github.com/user-attachments/assets/1b864bef-fccb-474c-94ad-c9e88c0669a1) | [Sprint 2 Docs](docs/sprints/sprint-2.md) |
+| Sprint 3 | 11/02 – 11/22 | Privacy and LGPD, with one end-to-end feature | 17 tasks | _link_ | [Sprint 3 Docs](docs/sprints/sprint-3.md) |
 
 → [Back to top](#denarius-data)
 
@@ -229,10 +255,29 @@ Closed decisions made by the Product Owner that orient every User Story. Changin
 </p>
 
 <p align="center">
-Local Machine Learning models (embeddings & generation) · LGPD compliance
+<img src="https://img.shields.io/badge/Django_5.2-092E20?style=for-the-badge&logo=django&logoColor=white" />
+<img src="https://img.shields.io/badge/pgvector-316192?style=for-the-badge&logo=postgresql&logoColor=white" />
+<img src="https://img.shields.io/badge/Ollama-000000?style=for-the-badge&logo=ollama&logoColor=white" />
+<img src="https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white" />
+<img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" />
+<img src="https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white" />
+<img src="https://img.shields.io/badge/SonarQube_Cloud-126ED3?style=for-the-badge&logo=sonarcloud&logoColor=white" />
+<img src="https://img.shields.io/badge/Jira-0052CC?style=for-the-badge&logo=jira&logoColor=white" />
 </p>
 
-> Additional tools (web framework, containerization, etc.) will be added here as the team defines them.
+| Layer | Technology | Use in the project |
+|---|---|---|
+| Backend | Python 3.12, Django 5.2 (REST), JWT | API, business rules, validation flow, logs |
+| Frontend | Vue 3, Vite, Vitest | Portal screens and unit tests |
+| Databases (SGBD) | PostgreSQL 16 ×2 | `default`: documents, chunks, logs · `credenciais_db`: personal data only (LGPD separation) |
+| Vector search | pgvector | Semantic search over document chunks |
+| Machine Learning | Ollama — `bge-m3` (embeddings) and `llama3.2` (generation) | RAG: answers based only on authorized documents, with source and page. Runs locally, no data leaves the network |
+| LGPD | Pseudonymization, append-only logs, data export | See [LGPD](docs/lgpd.md) |
+| Quality | pytest, Ruff, ESLint, Prettier, pre-commit, SonarQube Cloud | Tests, lint and code analysis |
+| DevOps | Docker Compose, GitHub Actions | Local databases and CI on every PR |
+| Management | Jira (Scrum), GitHub | Backlog, Sprints, PR review |
+
+> **MongoDB:** modeled for the challenge (see the data model, section 3), but not implemented: every structure the project needed fit in PostgreSQL.
 
 → [Back to top](#denarius-data)
 
@@ -273,12 +318,47 @@ git checkout develop
 cd ..
 ```
 
-### 3. Set up each service
+### 3. Set up and run each service
 
-Each submodule has its own setup instructions (dependencies, environment variables, run commands):
+Follow the **[Installation Manual](docs/manual-instalacao.md)**: databases with Docker, backend, Ollama models, frontend and the demo users. In short:
 
-- [Backend setup](https://github.com/DenariusData/API-6SEM-BACKEND#getting-started)
-- [Frontend setup](https://github.com/DenariusData/API-6SEM-FRONTEND#getting-started)
+```bash
+# Backend (inside API-6SEM-BACKEND, with the venv active and .env filled)
+docker compose up -d
+python manage.py migrate
+python manage.py migrate --database credenciais_db
+python manage.py seed_taxonomia
+python manage.py seed_usuarios_demo
+python manage.py runserver
+
+# Frontend (inside API-6SEM-FRONTEND)
+npm install
+npm run dev
+```
+
+Then open http://localhost:5173 and log in with a demo user (e.g. `admin@akaer.com.br` / `admin123`). How to use each screen: **[User Manual](docs/manual-usuario.md)**.
+
+### 4. Run the tests
+
+See [Tests](#tests) and the [unit](docs/testes/testes-unitarios.md) and [integration](docs/testes/testes-integracao.md) guides.
+
+### Project structure
+
+```
+API-6SEM/                       # this repo: documentation + submodules
+├── docs/                       # manuals, API, LGPD, sprints, DoR/DoD, tests
+├── API-6SEM-BACKEND/           # Django
+│   ├── api/                    # project settings and URLs
+│   ├── core_api/               # documents, validation, RAG, logs (models, views, services, migrations)
+│   ├── credenciais/            # users and personal data (credenciais_db)
+│   ├── docs/modelagem-banco/   # data model
+│   ├── tests/unit, tests/integration
+│   └── docker-compose.yml      # the two PostgreSQL databases
+└── API-6SEM-FRONTEND/          # Vue 3 + Vite
+    ├── src/components/         # screens (login, dashboard, upload, viewer...)
+    ├── src/services/           # API calls
+    └── tests/unit, tests/integration
+```
 
 ### Pulling submodule updates
 
@@ -296,7 +376,7 @@ git submodule update --remote --merge
 
 # 📓 API Documentation
 
-🚧 Under construction
+Full reference in **[docs/api.md](docs/api.md)**: authentication (JWT), error format, pagination, profiles, and every route (auth, documents, validation, viewer, questions to the AI, personal data, audit log) with request, response and errors.
 
 → [Back to top](#denarius-data)
 
@@ -306,7 +386,10 @@ git submodule update --remote --merge
 
 # 🖥️ Database Modeling
 
-🚧 Under construction
+Full model in the backend repository: **[modelagem-dados.md](https://github.com/DenariusData/API-6SEM-BACKEND/blob/develop/docs/modelagem-banco/modelagem-dados.md)**.
+
+- **`default` database:** documents, versions, taxonomy (areas and categories), secrecy levels, validation history, chunks with embeddings (pgvector), question log with sources, and the append-only audit and access logs.
+- **`credenciais_db` database:** users and personal data only, with restricted access. The documents database keeps only the user's id (pseudonymization, see [LGPD](docs/lgpd.md)).
 
 → [Back to top](#denarius-data)
 
@@ -318,14 +401,14 @@ git submodule update --remote --merge
 
 <div align="center">
 
-| Role | Name | LinkedIn & GitHub |
-|------|------|-------------------|
-| Scrum Master | Tiago Bernardo | [LinkedIn](https://www.linkedin.com/in/tiagobernardosantos/) · [GitHub](https://github.com/TiagoBernardoSantos) |
-| Product Owner | Beatriz Sthefanny |[LinkedIn](https://www.linkedin.com/in/beatriz-santos-0b6773220/) · [GitHub](https://github.com/BeatrizSantos00) |
-| Developer | Caio Osorio | [LinkedIn](https://www.linkedin.com/in/caio-o-a67224200/) · [GitHub](https://github.com/User-Business) |
-| Developer | Aline Ramos | [LinkedIn](https://www.linkedin.com/in/aline-ramos-3186b130/) · [GitHub](https://github.com/allineramos) |
-| Developer | Victor Ryan | [LinkedIn](https://www.linkedin.com/in/victor-ryan-51738b261) · [GitHub](https://github.com/yzvictorr) |
-| Developer | Tiago Alberto | [LinkedIn](https://www.linkedin.com/in/tiago-alberto-303909167/) · [GitHub](https://github.com/tiago17santos) |
+| Photo | Role | Name | LinkedIn & GitHub |
+|------|------|------|-------------------|
+| <img src="https://github.com/TiagoBernardoSantos.png" width="60" /> | Scrum Master | Tiago Bernardo Santos | [LinkedIn](https://www.linkedin.com/in/tiagobernardosantos/) · [GitHub](https://github.com/TiagoBernardoSantos) |
+| <img src="https://github.com/BeatrizSantos00.png" width="60" /> | Product Owner | Beatriz Sthefanny |[LinkedIn](https://www.linkedin.com/in/beatriz-santos-0b6773220/) · [GitHub](https://github.com/BeatrizSantos00) |
+| <img src="https://github.com/User-Business.png" width="60" /> | Developer | Caio Osorio | [LinkedIn](https://www.linkedin.com/in/caio-o-a67224200/) · [GitHub](https://github.com/User-Business) |
+| <img src="https://github.com/allineramos.png" width="60" /> | Developer | Aline Ramos | [LinkedIn](https://www.linkedin.com/in/aline-ramos-3186b130/) · [GitHub](https://github.com/allineramos) |
+| <img src="https://github.com/yzvictorr.png" width="60" /> | Developer | Victor Ryan | [LinkedIn](https://www.linkedin.com/in/victor-ryan-51738b261) · [GitHub](https://github.com/yzvictorr) |
+| <img src="https://github.com/tiago17santos.png" width="60" /> | Developer | Tiago Alberto | [LinkedIn](https://www.linkedin.com/in/tiago-alberto-303909167/) · [GitHub](https://github.com/tiago17santos) |
 
 </div>
 
@@ -338,7 +421,7 @@ git submodule update --remote --merge
 # 📜 Project Guidelines
 
 <details>
-<summary>Click to expand — Project Rules and Commit Standard</summary>
+<summary>Click to expand — Project Rules, Branch, Commit and Pull Request Standard</summary>
 
 ## 👥 Team Participation Rules
 
@@ -351,55 +434,95 @@ git submodule update --remote --merge
 
 ---
 
+## 🌿 Branch Standard
+
+- `main`: delivered releases only (merged from `develop` at the end of each sprint)
+- `develop`: integration branch; every task branch starts from it and goes back to it
+
+Task branches always carry the Jira task code, so Jira links the branch, commits and PR to the card:
+
+    <type>/AKA-<number>-short-description
+
+Accepted types: `feat` (or `feature`), `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `chore`, `ci`, `build`, `revert`.
+
+    feature/AKA-55-ai-response-language-support
+    test/AKA-99-unit-tests
+    feature/AKA-46-Create-validation-states-and-document-history
+
+Branches created from the Jira card ("Create branch") already follow this format.
+
+> **Why this strategy?** See [Branch Strategy](docs/estrategia-branch.md): reasons for `main` + `develop` + one branch per task, the commit pattern, squash merge and the automated checks.
+
+---
+
 ## 📌 Commit Standard
 
-All commits must follow the **"Commit Pattern – by Renato Adorno"** to ensure consistency and clarity across the repository.
+All commits follow the **"Commit Pattern – by Renato Adorno"** ([Conventional Commits](https://www.conventionalcommits.org)) with the Jira task code right after the type:
 
-### Commit Format
-
-    <type>: <description in English>
+    <type>: AKA-<number> <description in English>
 
 The description must:
 - Be written in **English**
 - Use a **direct, imperative tone**
 - Be **clear and concise**
-
----
+- Have no scope in parentheses (`feat(auth):` is rejected)
 
 ### 🧩 Commit Types
 
-- **fix** – Fixes a bug
 - **feat** – Introduces a new feature
+- **fix** – Fixes a bug
 - **docs** – Documentation-only changes
 - **style** – Code formatting changes with no logic impact
 - **refactor** – Code improvements that do not alter behavior
-- **build** – Changes to the build system or dependencies
+- **perf** – Performance improvements
 - **test** – Adding or updating tests
+- **build** – Changes to the build system or dependencies
+- **ci** – Changes to CI workflows
 - **chore** – Routine maintenance tasks
-
----
+- **revert** – Reverts a previous commit
 
 ### ✅ Examples
 
-    feat: add document upload endpoint
-    docs: update backend README
-    fix: correct classification level validation
-    refactor: improve OCR pipeline performance
-    test: add unit tests for permission filter
-
----
+    feat: AKA-95 add script to test bge-m3 locally
+    fix: AKA-28 correct JWT expiration check
+    test: AKA-99 add backend unit tests with pytest
+    docs: AKA-13 add document portal terms of use
 
 ### ⚠️ Rules
 
-- Always write commits in **English**
-- Strictly follow the defined **commit types**
-- Avoid vague or uninformative messages such as:
-  - `update`
-  - `fix stuff`
+- The `AKA-<number>` code is mandatory: without it Jira does not link the commit to the task
+- Avoid vague messages such as `update` or `fix stuff`; prefer descriptive, actionable ones:
 
-Always prefer descriptive, actionable messages such as:
+      fix: AKA-28 return unified error message on invalid login
 
-    fix: correct null pointer exception in service layer
+---
+
+## 🔀 Pull Request Standard
+
+1. Push the task branch and open the PR **against `develop`**
+2. PR title uses the same format as the commit, with the description starting with an **uppercase letter** and no punctuation at the end:
+
+       feat: AKA-55 Add language support for AI response
+       test: AKA-100 Add backend integration tests with PostgreSQL in CI
+
+   The **PR Title Check** workflow rejects titles outside this format.
+3. Fill in the PR template (`.github/PULL_REQUEST_TEMPLATE.md` in the backend and frontend repositories): description, Jira task, type of change, how to test and checklist
+4. Requirements to merge: CI green (lint, build, tests), at least **1 approval** and no conflicts
+5. Merge always with **Squash and merge**: the PR title becomes the single commit on `develop`
+6. Delete the branch after the merge
+
+At the end of each sprint, `develop` is merged into `main` through a release PR (`Release: vX.Y.Z — Sprint N delivery`).
+
+---
+
+## 🪝 Local Validation Hooks
+
+The backend and frontend repositories validate the branch name and the commit message before each commit, using [pre-commit](https://pre-commit.com) (`scripts/validate_branch_name.py` and `scripts/validate_commit_msg.py`). Install the hooks once per clone:
+
+    pip install pre-commit
+    pre-commit install --hook-type pre-commit --hook-type commit-msg
+
+From then on, a commit on a branch or with a message outside the standard is blocked with an explanation of the expected format. The same hooks also run Ruff (backend) or ESLint + Prettier (frontend).
 
 </details>
 
