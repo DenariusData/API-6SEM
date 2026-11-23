@@ -5,7 +5,7 @@
 | **Período** | 05/10/2026 – 25/10/2026 |
 | **Meta da Sprint** | Fechar o ciclo do documento: do upload com metadados à validação, deixando-o disponível para a IA com visualização segura. |
 | **Entregue** | 22 tarefas (149 h estimadas) |
-| **Vídeo do incremento** | _a incluir_ |
+| **Vídeo do incremento** | [Sprint 2 Video](https://github.com/user-attachments/assets/1b864bef-fccb-474c-94ad-c9e88c0669a1) |
 
 ## Backlog da Sprint
 
